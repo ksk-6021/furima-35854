@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| last_name          | string | null: false |
-| first_name         | string | null: false |
-| last_name_kana     | string | null: false |
-| first_name_kana    | string | null: false |
-| birth_date         | string | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birth_date         | date   | null: false               |
 
 ### Association
 
@@ -25,11 +25,7 @@
 | --------------   | ---------- | ----------------------------- |
 | name             | string     | null: false                   |
 | explain          | text       | null: false                   |
-| category         | string     | null: false                   |
-| condition        | string     | null: false                   |
-| shipping_charges | string     | null: false                   |
-| shipping_area    | string     | null: false                   |
-| shipping_time    | string     | null: false                   |
+| item_id          | integer    | null: false                   |
 | price            | string     | null: false                   |
 | user             | references | null: false, foreign_key: true|
 
@@ -44,9 +40,6 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| card_number     | string     | null: false                    |
-| card_expiration | string     | null: false                    |
-| card_code       | string     | null: false                    | 
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
 
