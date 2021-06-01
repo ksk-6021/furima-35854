@@ -25,8 +25,13 @@
 | --------------   | ---------- | ----------------------------- |
 | name             | string     | null: false                   |
 | explain          | text       | null: false                   |
+| category         | integer    | null: false                   |
+| condition        | integer    | null: false                   |
+| shipping_charges | integer    | null: false                   |
+| shipping_area    | integer    | null: false                   | 
+| shipping_time    | integer    | null: false                   |
 | item_id          | integer    | null: false                   |
-| price            | string     | null: false                   |
+| price            | integer    | null: false                   |
 | user             | references | null: false, foreign_key: true|
 
 
@@ -55,12 +60,12 @@
 
 | Column         | Type       | Options                       |
 | -------------- | ---------- | ----------------------------- |
-| postal_code    | string     | null: false                   |
-| prefecture     | string     | null: false                   |
+| postal_code    | integer    | null: false                   |
+| prefecture     | integer    | null: false                   |
 | city           | string     | null: false                   |
 | address        | string     | null: false                   |
-| building       | string     | null: false                   |
-| phone_number   | string     | null: false                   |
+| building       | string     |                               |
+| phone_number   | integer    | null: false                   |
 | order          | references | null: false, foreign_key: true|
 
 ### Association
