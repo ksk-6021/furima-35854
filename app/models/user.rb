@@ -10,4 +10,7 @@ class User < ApplicationRecord
   validates :last_name_kana,         presence: true
   validates :first_name_kana,        presence: true
   validates :birth_date,             presence: true
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+   validates :password, format: { with: VALID_PASSWORD_REGEX,
+              message: 'is invalid. Include both letters and numbers'}
 end
