@@ -4,27 +4,27 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname,               presence: true
-  
+  validates :nickname, presence: true
+
   ZENKAKU_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
-  with_options presence: true, format: { with: ZENKAKU_REGEX, message: "is invalid. Input full-width characters"} do
-   validates :last_name
+  with_options presence: true, format: { with: ZENKAKU_REGEX, message: 'is invalid. Input full-width characters' } do
+    validates :last_name
   end
-  with_options presence: true, format: { with: ZENKAKU_REGEX, message: "is invalid. Input full-width characters"} do
-   validates :first_name
+  with_options presence: true, format: { with: ZENKAKU_REGEX, message: 'is invalid. Input full-width characters' } do
+    validates :first_name
   end
-  
+
   KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
-  with_options presence: true, format: { with: KANA_REGEX, message: "is invalid. Input full-width katakana characters"} do
-   validates :last_name_kana
+  with_options presence: true, format: { with: KANA_REGEX, message: 'is invalid. Input full-width katakana characters' } do
+    validates :last_name_kana
   end
-  with_options presence: true, format: { with: KANA_REGEX, message: "is invalid. Input full-width katakana characters"} do
-   validates :first_name_kana
+  with_options presence: true, format: { with: KANA_REGEX, message: 'is invalid. Input full-width katakana characters' } do
+    validates :first_name_kana
   end
-  
-  validates :birth_date,             presence: true
-  
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-   validates :password, format: { with: VALID_PASSWORD_REGEX,
-              message: 'is invalid. Include both letters and numbers'}
+
+  validates :birth_date, presence: true
+
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :password, format: { with: VALID_PASSWORD_REGEX,
+                                 message: 'is invalid. Include both letters and numbers' }
 end
