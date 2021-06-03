@@ -6,11 +6,9 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
-  ZENKAKU_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
+  ZENKAKU_REGEX = /\A[ぁ-んァ-ン一-龥々]+\z/.freeze
   with_options presence: true, format: { with: ZENKAKU_REGEX, message: 'is invalid. Input full-width characters' } do
     validates :last_name
-  end
-  with_options presence: true, format: { with: ZENKAKU_REGEX, message: 'is invalid. Input full-width characters' } do
     validates :first_name
   end
 
