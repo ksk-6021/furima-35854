@@ -17,6 +17,8 @@ class Item < ApplicationRecord
   validates :shipping_charge_id,   numericality: { other_than: 1 }
   validates :shipping_area_id,     numericality: { other_than: 1 }
   validates :shipping_time_id,     numericality: { other_than: 1 }
-  validates :price,                numericality: { other_than: 1 }
   validates :image,                presence: true
+  
+  VALID_PRICE_REGEX = /\A[0-9]+\z/
+  validates :price, presence: true, format: {with: VALID_PRICE_REGEX, message: 'is invalid. Input half-width characters'} 
 end
