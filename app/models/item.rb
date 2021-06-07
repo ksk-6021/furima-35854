@@ -9,14 +9,20 @@ class Item < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :shipping_time
 
-  validates :name,                 presence: true
-  validates :explain,              presence: true
-  validates :category_id,          numericality: { other_than: 1 }
-  validates :condition_id,         numericality: { other_than: 1 }
-  validates :shipping_charge_id,   numericality: { other_than: 1 }
-  validates :shipping_area_id,     numericality: { other_than: 1 }
-  validates :shipping_time_id,     numericality: { other_than: 1 }
-  validates :image,                presence: true
+  with_options presence: true do
+    validates :name
+    validates :explain
+    validates :image
+  end
+
+  with_options numericality: { other_than: 1 } do
+    validates :category_id,          numericality: { other_than: 1 }
+    validates :condition_id,         numericality: { other_than: 1 }
+    validates :shipping_charge_id,   numericality: { other_than: 1 }
+    validates :shipping_area_id,     numericality: { other_than: 1 }
+    validates :shipping_time_id,     numericality: { other_than: 1 }
+  end
+  
 
   VALID_PRICE_REGEX = /\A[0-9]+\z/
   validates_inclusion_of :price, in: 300..9_999_999, numericality: { with: VALID_PRICE_REGEX }
