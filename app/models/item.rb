@@ -20,5 +20,5 @@ class Item < ApplicationRecord
   validates :image,                presence: true
   
   VALID_PRICE_REGEX = /\A[0-9]+\z/
-  validates :price, presence: true, format: {with: VALID_PRICE_REGEX, message: 'is invalid. Input half-width characters'} 
+  validates_inclusion_of :price, in:300..9999999, numericality: { with: VALID_PRICE_REGEX } 
 end

@@ -78,7 +78,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping area must be other than 1")
       end
       it '発送までの日数の情報がないと出品できない' do
-        @item.shipping_time_id = ''
+        @item.shipping_time_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping time is not a number")
       end
@@ -88,17 +88,19 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping time must be other than 1")
       end
       it '価格の情報がないと出品できない' do
-        @item.price = ''
+        @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
       it '価格は範囲内でないと出品できない' do
         @item.price = 100
         @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
       it '価格は半角数値でないと出品できない' do
         @item.price = '５００'
         @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
     end
   end
