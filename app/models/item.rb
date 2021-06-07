@@ -16,11 +16,11 @@ class Item < ApplicationRecord
   end
 
   with_options numericality: { other_than: 1 } do
-    validates :category_id,          numericality: { other_than: 1 }
-    validates :condition_id,         numericality: { other_than: 1 }
-    validates :shipping_charge_id,   numericality: { other_than: 1 }
-    validates :shipping_area_id,     numericality: { other_than: 1 }
-    validates :shipping_time_id,     numericality: { other_than: 1 }
+    validates :category_id
+    validates :condition_id
+    validates :shipping_charge_id
+    validates :shipping_area_id
+    validates :shipping_time_id
   end
   
 
