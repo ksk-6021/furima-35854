@@ -22,7 +22,6 @@ class Item < ApplicationRecord
     validates :shipping_area_id
     validates :shipping_time_id
   end
-  
 
   VALID_PRICE_REGEX = /\A[0-9]+\z/
   validates_inclusion_of :price, in: 300..9_999_999, numericality: { with: VALID_PRICE_REGEX }
