@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :items
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,8 +16,6 @@ class User < ApplicationRecord
   KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
   with_options presence: true, format: { with: KANA_REGEX, message: 'is invalid. Input full-width katakana characters' } do
     validates :last_name_kana
-  end
-  with_options presence: true, format: { with: KANA_REGEX, message: 'is invalid. Input full-width katakana characters' } do
     validates :first_name_kana
   end
 
