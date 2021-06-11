@@ -28,19 +28,19 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
       end
       it '郵便番号は「3桁ハイフン4桁」の半角文字列出ないと登録できない' do
-        @order_address.postal_code = "11111111"
+        @order_address.postal_code = '11111111'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it '都道府県が1だと登録できない' do
-         @order_address.prefecture_id = 1
-         @order_address.valid?
-         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
+        @order_address.prefecture_id = 1
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '市区町村がないと登録できない' do
-         @order_address.city = ''
-         @order_address.valid?
-         expect(@order_address.errors.full_messages).to include("City can't be blank")
+        @order_address.city = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("City can't be blank")
       end
       it '番地がないと登録できない' do
         @order_address.address = ''
@@ -48,29 +48,29 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Address can't be blank")
       end
       it '電話番号がないと登録できない' do
-         @order_address.phone_number = ''
-         @order_address.valid?
-         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
+        @order_address.phone_number = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
       it '電話番号は半角英数字混合では登録できない' do
         @order_address.phone_number = '12345aaaaaa'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it '電話番号は半角数値でないと登録できない' do
         @order_address.phone_number = '１１１１１１１１１１'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it '電話番号は半角英語では登録できない' do
         @order_address.phone_number = 'eeeeeeeeeee'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it '電話番号は、9桁以下の半角数値では登録できない' do
-         @order_address.phone_number = '11111111'
-         @order_address.valid?
-         expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        @order_address.phone_number = '11111111'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'userが紐づいていないと登録できない' do
         @order_address.user_id = nil
